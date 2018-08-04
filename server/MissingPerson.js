@@ -9,7 +9,8 @@ const missingPersonSchema = new Schema({
 	name: String,
 	last_seen: Number,
 	age: Number,
-	img_blob: String
+	img_blob: String,
+	man_img_blob: String
 });
 
 const MissingPerson = mongoose.model("MissingPerson", missingPersonSchema);

@@ -14,9 +14,9 @@ app.get("/missing_person_list", (req, res) => {
 });
 
 app.post("/missing_person", (req, res) => {
-	let { name, last_seen, age, img } = req.body;
+	let { name, last_seen, age, img, man_img } = req.body;
 
-	let missing_person = new MissingPerson({ name, last_seen, age, img_blob: img });
+	let missing_person = new MissingPerson({ name, last_seen, age, img_blob: img, man_img_blob: man_img });
 	missing_person.save(() => {
 		res.end();
 	});
