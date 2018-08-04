@@ -1,15 +1,18 @@
 const bodyParser = require("body-parser");
 const express = require("express");
+const path = require("path");
 const { alignEncode, manipulateAll } = require("./util");
 const { MissingPerson } = require("./MissingPerson");
 
 const app = express();
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.json());
 
-app.get("/missing_person_list", (req, res) => {
+app.get("/", (req, res) => {
 	MissingPerson.find({}, null, { limit: 10 }, (err, people) => {
-		res.json(people);
+		res.render("index", { people });
 	});
 });
 
@@ -18,7 +21,7 @@ app.post("/missing_person", (req, res) => {
 
 	let missing_person = new MissingPerson({ name, last_seen, age, img_blob: img, man_img_blob: man_img });
 	missing_person.save(() => {
-		res.end();
+		res.redirect("/");
 	});
 });
 

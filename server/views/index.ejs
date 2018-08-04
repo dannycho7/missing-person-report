@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<% for (let i in people) { %>
+		<%- include("person.ejs", { person: people[i] }) %>
+	<% } %>
+</body>
+</html>
