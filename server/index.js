@@ -1,10 +1,17 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const { alignEncode, manipulateAll } = require("./util");
+const { MissingPerson } = require("./MissingPerson");
 
 const app = express();
 
 app.use(bodyParser.json());
+
+app.get("/missing_person_list", (req, res) => {
+	MissingPerson.find({}, null, { limit: 10 }, (err, people) => {
+		res.json(people);
+	});
+});
 
 app.post("/align_encode", (req, res) => {
 	let { img } = req.body;
