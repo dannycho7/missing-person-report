@@ -13,6 +13,15 @@ app.get("/missing_person_list", (req, res) => {
 	});
 });
 
+app.post("/missing_person", (req, res) => {
+	let { name, last_seen, age, img } = req.body;
+
+	let missing_person = new MissingPerson({ name, last_seen, age, img_blob: img });
+	missing_person.save(() => {
+		res.end();
+	});
+});
+
 app.post("/align_encode", (req, res) => {
 	let { img } = req.body;
 
