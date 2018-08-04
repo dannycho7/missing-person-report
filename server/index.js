@@ -17,11 +17,24 @@ app.get("/", (req, res) => {
 });
 
 app.post("/missing_person", (req, res) => {
-	let { name, last_seen, age, img, man_img } = req.body;
+	let { name, last_seen, age, img } = req.body;
 
-	let missing_person = new MissingPerson({ name, last_seen, age, img_blob: img, man_img_blob: man_img });
-	missing_person.save(() => {
-		res.redirect("/");
+	alignEncode(img)
+	.then((cropped_file) => {
+		manipulateAll(cropped_file, age, last_seen)
+		.then((manipulated_file) => {
+			let missing_person = new MissingPerson({
+				name,
+				last_seen,
+				age,
+				img_blob: cropped_file,
+				man_img_blob: manipulated_file
+			});
+
+			missing_person.save(() => {
+				res.redirect("/");
+			});
+		});
 	});
 });
 

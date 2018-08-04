@@ -7,7 +7,7 @@ const alignEncode = (imgBlob) => {
 	});
 };
 
-const manipulateAll = (imgBlob) => {
+const manipulateAll = (imgBlob, age, last_seen) => {
 	return new Promise((resolve, reject) => {
 		resolve(fs.readFileSync(path.join(__dirname, "sample_images/data_man.dump")));
 	});
