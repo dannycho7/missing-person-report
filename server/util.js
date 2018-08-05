@@ -7,6 +7,8 @@ const { exec } = require("child_process");
 
 const alignEncode = (img_blob) => {
 	return new Promise((resolve, reject) => {
+		return resolve({ img: fs.readFileSync(path.join(__dirname, "sample_images/cropped.dump")) });
+
 		let req_options = {
 			url: process.env.MODEL_BASE_URL + "/api/align_encode",
 			method: "post",
@@ -34,6 +36,8 @@ const alignEncode = (img_blob) => {
 
 const manipulate = (z, age, last_seen) => {
 	return new Promise((resolve, reject) => {
+		return resolve(fs.readFileSync(path.join(__dirname, "sample_images/data_man.dump")));
+
 		let req_options = {
 			url: process.env.MODEL_BASE_URL + "/api/manipulate",
 			method: "post",

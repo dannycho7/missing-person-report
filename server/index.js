@@ -10,6 +10,7 @@ const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "assets")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '50mb'}));
 

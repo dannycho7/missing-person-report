@@ -1,7 +1,9 @@
-<div class="person">
-	<h1><%= person.name %></h1>
-	<img src="<%= person.img_blob %>" />
-	<img src="<%= person.man_img_blob %>" />
-	<p>Last Seen: <%= person.last_seen %> years ago.</p>
-	<p>Age: <%= person.age %></p>
+<div class="person card">
+	<img class="card-img-top before" src="<%= person.img_blob %>" />
+	<img class="card-img-top after" src="<%= person.man_img_blob %>" />
+	<div class="container card-body">
+		<h5 class="card-title"><%= person.name %></h5>
+		<p class="card-text">Last Seen: <%= person.last_seen %> years ago.</p>
+		<p class="card-text">Age: <%= person.age %></p>
+	</div>
 </div>
