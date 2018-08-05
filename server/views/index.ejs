@@ -4,8 +4,83 @@
 	<title></title>
 </head>
 <body>
-	<% for (let i in people) { %>
-		<%- include("person.ejs", { person: people[i] }) %>
-	<% } %>
+	<div>
+		<% for (let i in people) { %>
+			<%- include("person.ejs", { person: people[i] }) %>
+		<% } %>
+	</div>
+
+	<div>
+		<h1>Submit a Missing Person Report:</h1>
+		<form id="missing_person" action="/missing_person" method="POST">
+			<div>
+				<label>Name:</label>
+				<input type="text" name="name" />
+			</div>
+
+			<div>
+				<label>Age:</label>
+				<input type="number" name="age" />
+			</div>
+
+			<div>
+				<label>Last Seen:</label>
+				<input type="number" name="last_seen" />
+			</div>
+
+			<div>
+				<label>Photo:</label>
+				<input type="file" name="img" />
+			</div>
+
+			<button type="submit">Submit</button>
+		</form>
+	</div>
 </body>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-load-image/2.19.0/load-image.all.min.js"></script>
+	<script type="text/javascript">
+		const MAX_IMAGE_SIZE = 1024;
+		let form = document.getElementById("missing_person");
+		
+		form.onsubmit = function(evt) {
+			evt.preventDefault();
+
+			let inputFile = form.img.files[0];
+
+			if (!inputFile) {
+				window.alert("You must upload a photo");
+			}
+
+			loadImage(inputFile, (exifAdjustedImgAsCanvas) => {
+				let img_blob = exifAdjustedImgAsCanvas.toDataURL("image/png");
+
+				var xhttp = new XMLHttpRequest();
+
+				xhttp.addEventListener("load", () => {
+					window.location= "/";
+				});
+
+				xhttp.open("POST", "/missing_person");
+				xhttp.setRequestHeader("Content-Type", "application/json");
+
+				let payload = {
+					name: form.name.value,
+					last_seen: form.last_seen.value,
+					age: form.age.value,
+					img: img_blob
+				};
+
+				xhttp.send(JSON.stringify(payload));
+			}, {
+				orientation: true,
+				maxWidth: MAX_IMAGE_SIZE,
+				maxHeight: MAX_IMAGE_SIZE,
+				contain: true,
+				crossOrigin: "anonymous"
+			});
+
+			return false;
+		};
+
+	</script>
 </html>

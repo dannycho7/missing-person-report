@@ -8,7 +8,8 @@ const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '50mb'}));
 
 app.get("/", (req, res) => {
 	MissingPerson.find({}, null, { limit: 10 }, (err, people) => {
