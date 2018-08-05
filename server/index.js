@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '50mb'}));
 
 app.get("/", (req, res) => {
-	MissingPerson.find({}, null, { limit: 10 }, (err, people) => {
+	MissingPerson.find({}, null, { sort: { updatedAt: -1 }, limit: 10 }, (err, people) => {
 		res.render("index", { people });
 	});
 });

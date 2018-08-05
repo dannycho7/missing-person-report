@@ -11,6 +11,8 @@ const missingPersonSchema = new Schema({
 	age: Number,
 	img_blob: String,
 	man_img_blob: String
+}, {
+	timestamps: true
 });
 
 const MissingPerson = mongoose.model("MissingPerson", missingPersonSchema);
