@@ -12,34 +12,53 @@
 		<% } %>
 	</div>
 
-	<div>
-		<h1>Submit a Missing Person Report:</h1>
-		<form id="missing_person" action="/missing_person" method="POST">
-			<div>
-				<label>Name:</label>
-				<input type="text" name="name" />
-			</div>
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	  Launch demo modal
+	</button>
 
-			<div>
-				<label>Age:</label>
-				<input type="number" name="age" />
-			</div>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Submit a Missing Person Report</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form id="missing_person" action="/missing_person" method="POST">
+				<div>
+					<label>Name:</label>
+					<input type="text" name="name" />
+				</div>
 
-			<div>
-				<label>Last Seen:</label>
-				<input type="number" name="last_seen" />
-			</div>
+				<div>
+					<label>Age:</label>
+					<input type="number" name="age" />
+				</div>
 
-			<div>
-				<label>Photo:</label>
-				<input type="file" name="img" />
-			</div>
+				<div>
+					<label>Last Seen:</label>
+					<input type="number" name="last_seen" />
+				</div>
 
-			<button type="submit">Submit</button>
-		</form>
+				<div>
+					<label>Photo:</label>
+					<input type="file" name="img" />
+				</div>
+
+				<button type="submit">Submit</button>
+			</form>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 </body>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-load-image/2.19.0/load-image.all.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-load-image/2.19.0/load-image.all.min.js"></script>
 	<script type="text/javascript">
 		const MAX_IMAGE_SIZE = 1024;
 		let form = document.getElementById("missing_person");

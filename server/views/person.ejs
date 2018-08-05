@@ -1,9 +1,20 @@
-<div class="person card">
-	<img class="card-img-top before" src="<%= person.img_blob %>" />
-	<img class="card-img-top after" src="<%= person.man_img_blob %>" />
-	<div class="container card-body">
-		<h5 class="card-title"><%= person.name %></h5>
-		<p class="card-text">Last Seen: <%= person.last_seen %> years ago.</p>
-		<p class="card-text">Age: <%= person.age %></p>
+<div class="card-container">
+	<div class="card">
+		<div class="person after">
+			<img class="card-img-top" src="<%= person.man_img_blob %>" />
+			<div class="container card-body">
+				<h5 class="card-title"><%= person.name %></h5>
+				<p class="card-text">Lost <%= person.last_seen %> years ago at age <%= person.age %>.</p>
+				<p class="card-text">Age in photo: <%= person.age + person.last_seen %></p>			
+			</div>
+		</div>
+		<div class="person before">
+			<img class="card-img-top" src="<%= person.img_blob %>" />
+			<div class="container card-body">
+				<h5 class="card-title"><%= person.name %></h5>
+				<p class="card-text">Lost <%= person.last_seen %> years ago at age <%= person.age %>.</p>
+				<p class="card-text">Age in photo: <%= person.age %></p>			
+			</div>
+		</div>
 	</div>
 </div>
