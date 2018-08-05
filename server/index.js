@@ -1,7 +1,9 @@
+require("dotenv").config();
+
 const bodyParser = require("body-parser");
 const express = require("express");
 const path = require("path");
-const { alignEncode, manipulateAll } = require("./util");
+const { alignEncode, manipulate } = require("./util");
 const { MissingPerson } = require("./MissingPerson");
 
 const app = express();
@@ -21,8 +23,8 @@ app.post("/missing_person", (req, res) => {
 	let { name, last_seen, age, img } = req.body;
 
 	alignEncode(img)
-	.then((cropped_file) => {
-		manipulateAll(cropped_file, age, last_seen)
+	.then(({ img: cropped_file, z: cropped_file_z }) => {
+		manipulate(cropped_file_z, age, last_seen)
 		.then((manipulated_file) => {
 			let missing_person = new MissingPerson({
 				name,
