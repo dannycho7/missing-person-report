@@ -4,6 +4,7 @@
 	<title>Missing Person Report</title>
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./main.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 	<div>
@@ -13,9 +14,7 @@
 	</div>
 
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-	  Launch demo modal
-	</button>
+	<button type="button" class="modal-btn" data-toggle="modal" data-target="#exampleModal"><i class="material-icons">add</i></button>
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -29,27 +28,27 @@
 	      </div>
 	      <div class="modal-body">
 	        <form id="missing_person" action="/missing_person" method="POST">
-				<div>
-					<label>Name:</label>
-					<input type="text" name="name" />
+				<div class="form-group">
+					<label for="form-name">Name:</label>
+					<input type="text" id="form-name" name="name" class="form-control" />
 				</div>
 
-				<div>
-					<label>Age:</label>
-					<input type="number" name="age" />
+				<div class="form-group">
+					<label for="form-age">Age:</label>
+					<input type="number" id="form-age" name="age" class="form-control" />
 				</div>
 
-				<div>
-					<label>Last Seen:</label>
-					<input type="number" name="last_seen" />
+				<div class="form-group">
+					<label for="form-last-seen">Last Seen:</label>
+					<input type="number" id="form-last-seen" name="last_seen" class="form-control" />
 				</div>
 
-				<div>
-					<label>Photo:</label>
-					<input type="file" name="img" />
+				<div class="form-group">
+					<label for="form-photo">Photo:</label>
+					<input type="file" id="form-photo" name="img" class="form-control-file" />
 				</div>
 
-				<button type="submit">Submit</button>
+				<button class="btn btn-primary" type="submit">Submit</button>
 			</form>
 	      </div>
 	    </div>

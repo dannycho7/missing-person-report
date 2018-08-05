@@ -40,3 +40,25 @@
 .card-container:hover .card{
 	transform: rotateY(180deg);
 }
+
+.modal-btn {
+	background-color: #F44336;
+	width: 56px;
+	height: 56px;
+	padding: 0;
+	border-color: transparent;
+	border-radius: 50%;
+	position: fixed;
+	right: 25px;
+	bottom: 25px;
+}
+
+.modal-btn:hover {
+	cursor: pointer;
+	opacity: 0.6;
+}
+
+.modal-btn i {
+	color: #fff;
+	margin: 0;
+}
