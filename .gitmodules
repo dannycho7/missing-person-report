@@ -1,0 +1,3 @@
+[submodule "face_mod_model"]
+	path = face_mod_model
+	url = https://github.com/openai/glow
